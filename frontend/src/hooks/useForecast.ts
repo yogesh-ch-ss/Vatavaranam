@@ -1,5 +1,5 @@
 import { useState, useEffect, ChangeEvent } from 'react'
-import { optionType } from '../types'
+import { optionType, forecastType } from '../types'
 
 const useForecast = () => {
   // term is whatever is entered on the input field
@@ -11,7 +11,7 @@ const useForecast = () => {
   // city is set after selecting a city from the search options
   const [city, setCity] = useState<optionType | null>(null)
 
-  const [forecast, setForecast] = useState<null>(null)
+  const [forecast, setForecast] = useState<forecastType | null>(null)
 
   // To get the search options
   const getSearchOptions = (value: string) => {
@@ -40,7 +40,7 @@ const useForecast = () => {
   // Gets the forecast data of the entered city
   const getForecast = (city: optionType) => {
     fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${city.lat}&lon=${city.lon}&appid=${process.env.REACT_APP_API_KEY}`
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${city.lat}&lon=${city.lon}&appid=${process.env.REACT_APP_API_KEY}`
     )
       .then((res) => res.json())
       .then((data) => setForecast(data))
