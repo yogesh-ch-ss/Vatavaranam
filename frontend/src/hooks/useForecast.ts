@@ -20,6 +20,7 @@ const useForecast = () => {
     )
       .then((res) => res.json())
       .then((data) => setOptions(data))
+      .catch((e) => console.log(e))
   }
 
   // Whenever there is a change in the input on the search
@@ -51,6 +52,7 @@ const useForecast = () => {
 
         setForecast(forecastData)
       })
+      .catch((e) => console.log(e))
   }
 
   // Acts after the Submit button is clicked
