@@ -20,7 +20,7 @@ const Search = ({
   return (
     <main className="flex justify-center items-center h-[100vh] w-full">
       <section className="w-full md:max-w-[500px] p-4 flex flex-col text-center items-center justify-center md:px-10-lg:p-24 h-full lg:h-[500px] bg-white bg-opacity-20 backdrop-blur-lg drop-shadow-lg rounded text-zinc-700">
-        <h1 className="text-4xl font-semibold font-mono px-4 py-4 bg-gradient-to-r from-slate-700 via-purple-800 to-slate-700 bg-clip-text text-transparent">
+        <h1 className="text-4xl font-semibold font-mono px-4 py-4 bg-gradient-to-r from-slate-700 via-purple-800 to-slate-600 bg-clip-text text-transparent">
           vatavaranam
         </h1>
         <h2 className="text-2xl font-light">
