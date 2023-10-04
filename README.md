@@ -1,2 +1,2 @@
 # Vatavaranam
-### Live Weather App
+### Weather Forecast App

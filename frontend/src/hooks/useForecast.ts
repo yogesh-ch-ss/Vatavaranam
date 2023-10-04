@@ -40,13 +40,13 @@ const useForecast = () => {
   // Gets the forecast data of the searched city
   const getForecast = (city: optionType) => {
     fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?lat=${city.lat}&lon=${city.lon}&appid=${process.env.REACT_APP_API_KEY}`
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${city.lat}&lon=${city.lon}&appid=${process.env.REACT_APP_API_KEY}&units=metric`
     )
       .then((res) => res.json())
       .then((data) => {
         const forecastData = {
           ...data.city,
-          list: data.list.slice(0, 24),
+          list: data.list.slice(0, 16),
         }
 
         setForecast(forecastData)
