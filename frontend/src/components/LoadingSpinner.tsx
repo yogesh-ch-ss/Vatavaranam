@@ -13,8 +13,9 @@ const LoadingSpinner = (): JSX.Element => {
         disabled
       >
         <div className="flex items-center justify-center m-[10px]">
-          <div className="h-10 w-10 border-t-transparent border-solid animate-spin rounded-full border-violet-700 border-4" />
+          <div className="h-14 w-14 border-t-transparent border-solid animate-spin rounded-full border-zinc-200 border-8" />
         </div>
+        <p className="text-zinc-100 font-semibold">Fetching Data from API...</p>
       </button>
     </div>
   )
