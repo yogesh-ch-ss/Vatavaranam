@@ -2,6 +2,8 @@ import { useState, useEffect, ChangeEvent } from 'react'
 import { optionType, forecastType } from '../types'
 
 const useForecast = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+
   // term is whatever is entered on the input field
   const [term, setTerm] = useState<string>('')
 
@@ -39,21 +41,38 @@ const useForecast = () => {
   }
 
   // Gets the forecast data of the searched city
-  const getForecast = (city: optionType) => {
-    fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?lat=${city.lat}&lon=${city.lon}&appid=${process.env.REACT_APP_API_KEY}&units=metric`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        const forecastData = {
-          ...data.city,
-          list: data.list.slice(0, 16),
-        }
+  const getForecast = async (city: optionType) => {
+    setIsLoading((prevLoadingState) => {
+      return true // Update isLoading to true
+    })
 
-        setForecast(forecastData)
-      })
-      .catch((e) => console.log(e))
+    try {
+      const response = await fetch(
+        `https://api.openweathermap.org/data/2.5/forecast?lat=${city.lat}&lon=${city.lon}&appid=${process.env.REACT_APP_API_KEY}&units=metric`
+      )
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok')
+      }
+
+      const data = await response.json()
+
+      const forecastData = {
+        ...data.city,
+        list: data.list.slice(0, 16),
+      }
+
+      setForecast(forecastData)
+    } catch (error) {
+      console.error(error)
+    } finally {
+      setIsLoading(false)
+    }
   }
+
+  // useEffect(() => {
+  //   console.log(isLoading)
+  // }, [isLoading])
 
   // Acts after the Submit button is clicked
   const onSubmit = () => {
@@ -71,6 +90,7 @@ const useForecast = () => {
   }, [city])
 
   return {
+    isLoading,
     term,
     options,
     forecast,
