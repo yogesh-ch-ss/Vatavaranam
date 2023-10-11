@@ -31,7 +31,7 @@ const Search = ({
           <span className="font-semibold">select</span> the city or area from the
           dropdown.
         </p>
-        <p className="text-xs mt-2 font-medium text-">Use <span className="font-mono">"_"</span> for space. Ex: San_Francisco</p>
+        {/* <p className="text-xs mt-2 font-medium text-">Use <span className="font-mono">"_"</span> for space. Ex: San_Francisco</p> */}
 
         <div className="relative flex mt-10 md:mt-4">
           <input

@@ -27,7 +27,15 @@ const useForecast = () => {
 
   // Whenever there is a change in the input on the search
   const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value.trim()
+    const value = e.target.value
+
+    // Check if the value starts with spaces
+    if (value.startsWith(' ')) {
+      // If it starts with spaces, remove them and update the input value
+      e.target.value = value.trim()
+      return
+    }
+
     setTerm(value)
 
     if (value === '') return
