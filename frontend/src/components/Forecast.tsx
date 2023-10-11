@@ -135,8 +135,11 @@ const Forecast = ({ data }: Props): JSX.Element => {
             info={`${(today.visibility / 1000).toFixed()} kms`}
             description={getVisibilityValue(today.visibility)}
           />
-
         </section>
+
+        <p className="text-xs text-center text-zinc-800 font-normal">
+          Timings displayed are referenced to the device
+        </p>
       </div>
     </div>
   )
